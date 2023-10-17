@@ -4,7 +4,7 @@ console.log('Hello miss Minakshi');
 const API_KEY="f529c6ae35e00e62dca7b6c624cd35f5";
 function renderWeatherInfo(data){
      let newPara = document.createElement('p');
-  newPara.textContent = '${data?.main?.temp.toFixed(2)} °C'
+  newPara.textContent = `${data?.main?.temp.toFixed(2)} °C`
 
 document.body.appendChild(newPara);
 }
@@ -13,16 +13,16 @@ async function fetchWeatherDetails() {
     try{
         let city = "mumbai";
 
-const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?mumbai&appid={API_KEY}`);
+const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`);
 
 const data = await response.json();
-console.log("Weather data:->" + data);
+console.log("Weather data:->" , data);
 
 //let newPara = document.createElement('p');
 //newPara.textContent = '${data?.main?.temp.toFixed(2)} °C'
 
 //document.body.appendChild(newPara);
-  renderweatherInfo(data);
+  renderWeatherInfo(data);
 
     }
     catch(err) {
@@ -34,7 +34,7 @@ console.log("Weather data:->" + data);
         let latitude = 15.6333;
         let longitude = 18.7333;
 
-        let result = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid={API_key}&units=metric`);
+        let result = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API_KEY}&units=metric`);
 
         let data = await result.json();
 
